@@ -12,17 +12,17 @@ Optionspage::Optionspage(float width, float height) {
 
 	Options[0].setFont(font);
 	Options[0].setFillColor(Color::Cyan);
-	Options[0].setString("Save the Man");
+	Options[0].setString("Bingo");
 	Options[0].setPosition(Vector2f(width / 2 - Options[0].getGlobalBounds().width / 2, (height / (MAX_NUMBER_OF_ITEMS_2 + 1) * 1)-Options[0].getGlobalBounds().height / 2));
 
 	Options[1].setFont(font);
 	Options[1].setFillColor(Color::White);
-	Options[1].setString("Yet to decide");
+	Options[1].setString("Save Me");
 	Options[1].setPosition(Vector2f(width / 2 - Options[1].getGlobalBounds().width / 2, (height / (MAX_NUMBER_OF_ITEMS_2 + 1) * 2)-Options[1].getGlobalBounds().height / 2));
 
 	Options[2].setFont(font);
 	Options[2].setFillColor(Color::White);
-	Options[2].setString("Bingo");
+	Options[2].setString("Fist Goal");
 	Options[2].setPosition(Vector2f(width / 2 - Options[2].getGlobalBounds().width / 2, (height / (MAX_NUMBER_OF_ITEMS_2 + 1) * 3)-Options[2].getGlobalBounds().height / 2));
 
 	Options[3].setFont(font);

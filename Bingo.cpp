@@ -27,7 +27,7 @@ int element();
 int checkwinner(int ch);
 int gameover(int win1, RenderWindow& window);
 int BingoResult(int w, RenderWindow& window);
-
+int botvalue();
 
 bool checkBot(int botv) {
     bool isDuplicate = false;
@@ -65,338 +65,7 @@ int justchecking() {
     }
     return 0;
 }
-int botvalue()
-{
-    bool Update_r = false, Update= false, work=true;
-    
-    bv = 0; // Reset bv to 0 initially
-    // part 1
-    for (int i = 0; i < 5; ++i) {
-        // Check if the bot can complete a row
-        int rowSum = 0;
-        for (int j = 0; j < 5; ++j) {
-            rowSum += bsol[i][j];
-        }
-        if (rowSum == 4) {
-            for (int j = 0; j < 5; ++j) {
-                if (bsol[i][j] == 0) {
-                    bv = bot1[i][j];
-                    if (checkBot(bv)) {
-                        bsol[i][j] = 1;
-                        justchecking();
-                        return bv;
-                    }
-                }
-            }
-        }
 
-        // Check if the bot can complete a column
-        int colSum = 0;
-        for (int j = 0; j < 5; ++j) {
-            colSum += bsol[j][i];
-        }
-        if (colSum == 4) {
-            for (int j = 0; j < 5; ++j) {
-                if (bsol[j][i] == 0) {
-                    bv = bot1[j][i];
-                    if (checkBot(bv)) {
-                        bsol[j][i] = 1;
-                        justchecking();
-                        return bv;
-                    }
-                }
-            }
-        }
-    }
-
-    // Check if the bot can complete the main diagonal
-    int mainDiagonalSum = 0;
-    for (int i = 0; i < 5; ++i) {
-        mainDiagonalSum += bsol[i][i];
-    }
-    if (mainDiagonalSum == 4) {
-        for (int i = 0; i < 5; ++i) {
-            if (bsol[i][i] == 0) {
-                bv = bot1[i][i];
-                if (checkBot(bv)) {
-                    bsol[i][i] = 1;
-                    justchecking();
-                    return bv;
-                }
-            }
-        }
-    }
-
-    // Check if the bot can complete the secondary diagonal
-    int secondaryDiagonalSum = 0;
-    for (int i = 0; i < 5; ++i) {
-        secondaryDiagonalSum += bsol[i][4 - i];
-    }
-    if (secondaryDiagonalSum == 4 ) {
-        for (int i = 0; i < 5; ++i) {
-            if (bsol[i][4 - i] == 0) {
-                bv = bot1[i][4 - i];
-                if (checkBot(bv)) {
-                    bsol[i][4 - i] = 1;
-                    justchecking();
-                    return bv;
-                }
-            }
-        }
-    }
-    // part 2
-    for (int i = 0; i < 5; ++i) {
-        // Check if the bot can complete a row
-        int rowSum = 0;
-        for (int j = 0; j < 5; ++j) {
-            rowSum += bsol[i][j];
-        }
-        if (rowSum == 3 ) {
-            for (int j = 0; j < 5; ++j) {
-                if (bsol[i][j] == 0) {
-                    bv = bot1[i][j];
-                    if (checkBot(bv)) {
-                        bsol[i][j] = 1;
-                        justchecking();
-                        return bv;
-                    }
-                }
-            }
-        }
-
-        // Check if the bot can complete a column
-        int colSum = 0;
-        for (int j = 0; j < 5; ++j) {
-            colSum += bsol[j][i];
-        }
-        if (colSum == 3 ) {
-            for (int j = 0; j < 5; ++j) {
-                if (bsol[j][i] == 0) {
-                    bv = bot1[j][i];
-                    if (checkBot(bv)) {
-                        bsol[j][i] = 1;
-                        justchecking();
-                        return bv;
-                    }
-                }
-            }
-        }
-    }
-
-    // Check if the bot can complete the main diagonal
-    mainDiagonalSum = 0;
-    for (int i = 0; i < 5; ++i) {
-        mainDiagonalSum += bsol[i][i];
-    }
-    if (mainDiagonalSum == 3 ) {
-        for (int i = 0; i < 5; ++i) {
-            if (bsol[i][i] == 0) {
-                bv = bot1[i][i];
-                if (checkBot(bv)) {
-                    bsol[i][i] = 1;
-                    justchecking();
-                    return bv;
-                }
-            }
-        }
-    }
-
-    // Check if the bot can complete the secondary diagonal
-    secondaryDiagonalSum = 0;
-    for (int i = 0; i < 5; ++i) {
-        secondaryDiagonalSum += bsol[i][4 - i];
-    }
-    if (secondaryDiagonalSum == 3) {
-        for (int i = 0; i < 5; ++i) {
-            if (bsol[i][4 - i] == 0) {
-                bv = bot1[i][4 - i];
-                if (checkBot(bv)) {
-                    bsol[i][4 - i] = 1;
-                    justchecking();
-                    return bv;
-                }
-            }
-        }
-    }
-
-    //part 3
-    for (int i = 0; i < 5; ++i) {
-        // Check if the bot can complete a row
-        int rowSum = 0;
-        for (int j = 0; j < 5; ++j) {
-            rowSum += bsol[i][j];
-        }
-        if (rowSum == 2) {
-            for (int j = 0; j < 5; ++j) {
-                if (bsol[i][j] == 0) {
-                    bv = bot1[i][j];
-                    if (checkBot(bv)) {
-                        bsol[i][j] = 1;
-                        justchecking();
-                        return bv;
-                    }
-                }
-            }
-        }
-
-        // Check if the bot can complete a column
-        int colSum = 0;
-        for (int j = 0; j < 5; ++j) {
-            colSum += bsol[j][i];
-        }
-        if (colSum == 2) {
-            for (int j = 0; j < 5; ++j) {
-                if (bsol[j][i] == 0) {
-                    bv = bot1[j][i];
-                    if (checkBot(bv)) {
-                        bsol[j][i] = 1;
-                        justchecking();
-                        return bv;
-                    }
-                }
-            }
-        }
-    }
-
-    // Check if the bot can complete the main diagonal
-    mainDiagonalSum = 0;
-    for (int i = 0; i < 5; ++i) {
-        mainDiagonalSum += bsol[i][i];
-    }
-    if (mainDiagonalSum == 2) {
-        for (int i = 0; i < 5; ++i) {
-            if (bsol[i][i] == 0) {
-                bv = bot1[i][i];
-                if (checkBot(bv)) {
-                    bsol[i][i] = 1;
-                    justchecking();
-                    return bv;
-                }
-            }
-        }
-    }
-
-    // Check if the bot can complete the secondary diagonal
-    secondaryDiagonalSum = 0;
-    for (int i = 0; i < 5; ++i) {
-        secondaryDiagonalSum += bsol[i][4 - i];
-    }
-    if (secondaryDiagonalSum == 2) {
-        for (int i = 0; i < 5; ++i) {
-            if (bsol[i][4 - i] == 0) {
-                bv = bot1[i][4 - i];
-                if (checkBot(bv)) {
-                    bsol[i][4 - i] = 1;
-                    justchecking();
-                    return bv;
-                }
-            }
-        }
-    }
-
-    // part 4
-    for (int i = 0; i < 5; ++i) {
-        // Check if the bot can complete a row
-        int rowSum = 0;
-        for (int j = 0; j < 5; ++j) {
-            rowSum += bsol[i][j];
-        }
-        if (rowSum == 1) {
-            for (int j = 0; j < 5; ++j) {
-                if (bsol[i][j] == 0) {
-                    bv = bot1[i][j];
-                    if (checkBot(bv)) {
-                        bsol[i][j] = 1;
-                        justchecking();
-                        return bv;
-                    }
-                }
-            }
-        }
-
-        // Check if the bot can complete a column
-        int colSum = 0;
-        for (int j = 0; j < 5; ++j) {
-            colSum += bsol[j][i];
-        }
-        if (colSum == 1) {
-            for (int j = 0; j < 5; ++j) {
-                if (bsol[j][i] == 0) {
-                    bv = bot1[j][i];
-                    if (checkBot(bv)) {
-                        bsol[j][i] = 1;
-                        justchecking();
-                        return bv;
-                    }
-                }
-            }
-        }
-    }
-
-    // Check if the bot can complete the main diagonal
-    mainDiagonalSum = 0;
-    for (int i = 0; i < 5; ++i) {
-        mainDiagonalSum += bsol[i][i];
-    }
-    if (mainDiagonalSum == 1) {
-        for (int i = 0; i < 5; ++i) {
-            if (bsol[i][i] == 0) {
-                bv = bot1[i][i];
-                if (checkBot(bv)) {
-                    bsol[i][i] = 1;
-                    justchecking();
-                    return bv;
-                }
-            }
-        }
-    }
-
-    // Check if the bot can complete the secondary diagonal
-    secondaryDiagonalSum = 0;
-    for (int i = 0; i < 5; ++i) {
-        secondaryDiagonalSum += bsol[i][4 - i];
-    }
-    if (secondaryDiagonalSum == 1) {
-        for (int i = 0; i < 5; ++i) {
-            if (bsol[i][4 - i] == 0) {
-                bv = bot1[i][4 - i];
-                if (checkBot(bv)) {
-                    bsol[i][4 - i] = 1;
-                    justchecking();
-                    return bv;
-                }
-            }
-        }
-    }
-
-
-    // If no strategic moves are available, make a random choice
-    while (work) {
-        random_device rd;
-        uniform_int_distribution<int> dist(1, 25);
-        bv = dist(rd);
-        if (checkBot(bv)) {
-            Update = true; // to add random number
-            work = false;
-            break;
-        }
-    }//*/
-    if (Update) {
-        // Update bsol matrix
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                if (bot1[i][j] == bv) {
-                    bsol[i][j] = 1;
-                }
-            }
-        }
-        justchecking();
-    }
-    
-    
-    return bv;
-    
-}
 
 int Bingo(RenderWindow& window)
 {
@@ -789,6 +458,337 @@ int element() {
     }
 
     return 0;
+}
+int botvalue() {
+    bool Update_r = false, Update = false, work = true;
+
+    bv = 0; // Reset bv to 0 initially
+    // part 1
+    for (int i = 0; i < 5; ++i) {
+        // Check if the bot can complete a row
+        int rowSum = 0;
+        for (int j = 0; j < 5; ++j) {
+            rowSum += bsol[i][j];
+        }
+        if (rowSum == 4) {
+            for (int j = 0; j < 5; ++j) {
+                if (bsol[i][j] == 0) {
+                    bv = bot1[i][j];
+                    if (checkBot(bv)) {
+                        bsol[i][j] = 1;
+                        justchecking();
+                        return bv;
+                    }
+                }
+            }
+        }
+
+        // Check if the bot can complete a column
+        int colSum = 0;
+        for (int j = 0; j < 5; ++j) {
+            colSum += bsol[j][i];
+        }
+        if (colSum == 4) {
+            for (int j = 0; j < 5; ++j) {
+                if (bsol[j][i] == 0) {
+                    bv = bot1[j][i];
+                    if (checkBot(bv)) {
+                        bsol[j][i] = 1;
+                        justchecking();
+                        return bv;
+                    }
+                }
+            }
+        }
+    }
+
+    // Check if the bot can complete the main diagonal
+    int mainDiagonalSum = 0;
+    for (int i = 0; i < 5; ++i) {
+        mainDiagonalSum += bsol[i][i];
+    }
+    if (mainDiagonalSum == 4) {
+        for (int i = 0; i < 5; ++i) {
+            if (bsol[i][i] == 0) {
+                bv = bot1[i][i];
+                if (checkBot(bv)) {
+                    bsol[i][i] = 1;
+                    justchecking();
+                    return bv;
+                }
+            }
+        }
+    }
+
+    // Check if the bot can complete the secondary diagonal
+    int secondaryDiagonalSum = 0;
+    for (int i = 0; i < 5; ++i) {
+        secondaryDiagonalSum += bsol[i][4 - i];
+    }
+    if (secondaryDiagonalSum == 4) {
+        for (int i = 0; i < 5; ++i) {
+            if (bsol[i][4 - i] == 0) {
+                bv = bot1[i][4 - i];
+                if (checkBot(bv)) {
+                    bsol[i][4 - i] = 1;
+                    justchecking();
+                    return bv;
+                }
+            }
+        }
+    }
+    // part 2
+    for (int i = 0; i < 5; ++i) {
+        // Check if the bot can complete a row
+        int rowSum = 0;
+        for (int j = 0; j < 5; ++j) {
+            rowSum += bsol[i][j];
+        }
+        if (rowSum == 3) {
+            for (int j = 0; j < 5; ++j) {
+                if (bsol[i][j] == 0) {
+                    bv = bot1[i][j];
+                    if (checkBot(bv)) {
+                        bsol[i][j] = 1;
+                        justchecking();
+                        return bv;
+                    }
+                }
+            }
+        }
+
+        // Check if the bot can complete a column
+        int colSum = 0;
+        for (int j = 0; j < 5; ++j) {
+            colSum += bsol[j][i];
+        }
+        if (colSum == 3) {
+            for (int j = 0; j < 5; ++j) {
+                if (bsol[j][i] == 0) {
+                    bv = bot1[j][i];
+                    if (checkBot(bv)) {
+                        bsol[j][i] = 1;
+                        justchecking();
+                        return bv;
+                    }
+                }
+            }
+        }
+    }
+
+    // Check if the bot can complete the main diagonal
+    mainDiagonalSum = 0;
+    for (int i = 0; i < 5; ++i) {
+        mainDiagonalSum += bsol[i][i];
+    }
+    if (mainDiagonalSum == 3) {
+        for (int i = 0; i < 5; ++i) {
+            if (bsol[i][i] == 0) {
+                bv = bot1[i][i];
+                if (checkBot(bv)) {
+                    bsol[i][i] = 1;
+                    justchecking();
+                    return bv;
+                }
+            }
+        }
+    }
+
+    // Check if the bot can complete the secondary diagonal
+    secondaryDiagonalSum = 0;
+    for (int i = 0; i < 5; ++i) {
+        secondaryDiagonalSum += bsol[i][4 - i];
+    }
+    if (secondaryDiagonalSum == 3) {
+        for (int i = 0; i < 5; ++i) {
+            if (bsol[i][4 - i] == 0) {
+                bv = bot1[i][4 - i];
+                if (checkBot(bv)) {
+                    bsol[i][4 - i] = 1;
+                    justchecking();
+                    return bv;
+                }
+            }
+        }
+    }
+
+    //part 3
+    for (int i = 0; i < 5; ++i) {
+        // Check if the bot can complete a row
+        int rowSum = 0;
+        for (int j = 0; j < 5; ++j) {
+            rowSum += bsol[i][j];
+        }
+        if (rowSum == 2) {
+            for (int j = 0; j < 5; ++j) {
+                if (bsol[i][j] == 0) {
+                    bv = bot1[i][j];
+                    if (checkBot(bv)) {
+                        bsol[i][j] = 1;
+                        justchecking();
+                        return bv;
+                    }
+                }
+            }
+        }
+
+        // Check if the bot can complete a column
+        int colSum = 0;
+        for (int j = 0; j < 5; ++j) {
+            colSum += bsol[j][i];
+        }
+        if (colSum == 2) {
+            for (int j = 0; j < 5; ++j) {
+                if (bsol[j][i] == 0) {
+                    bv = bot1[j][i];
+                    if (checkBot(bv)) {
+                        bsol[j][i] = 1;
+                        justchecking();
+                        return bv;
+                    }
+                }
+            }
+        }
+    }
+
+    // Check if the bot can complete the main diagonal
+    mainDiagonalSum = 0;
+    for (int i = 0; i < 5; ++i) {
+        mainDiagonalSum += bsol[i][i];
+    }
+    if (mainDiagonalSum == 2) {
+        for (int i = 0; i < 5; ++i) {
+            if (bsol[i][i] == 0) {
+                bv = bot1[i][i];
+                if (checkBot(bv)) {
+                    bsol[i][i] = 1;
+                    justchecking();
+                    return bv;
+                }
+            }
+        }
+    }
+
+    // Check if the bot can complete the secondary diagonal
+    secondaryDiagonalSum = 0;
+    for (int i = 0; i < 5; ++i) {
+        secondaryDiagonalSum += bsol[i][4 - i];
+    }
+    if (secondaryDiagonalSum == 2) {
+        for (int i = 0; i < 5; ++i) {
+            if (bsol[i][4 - i] == 0) {
+                bv = bot1[i][4 - i];
+                if (checkBot(bv)) {
+                    bsol[i][4 - i] = 1;
+                    justchecking();
+                    return bv;
+                }
+            }
+        }
+    }
+
+    // part 4
+    for (int i = 0; i < 5; ++i) {
+        // Check if the bot can complete a row
+        int rowSum = 0;
+        for (int j = 0; j < 5; ++j) {
+            rowSum += bsol[i][j];
+        }
+        if (rowSum == 1) {
+            for (int j = 0; j < 5; ++j) {
+                if (bsol[i][j] == 0) {
+                    bv = bot1[i][j];
+                    if (checkBot(bv)) {
+                        bsol[i][j] = 1;
+                        justchecking();
+                        return bv;
+                    }
+                }
+            }
+        }
+
+        // Check if the bot can complete a column
+        int colSum = 0;
+        for (int j = 0; j < 5; ++j) {
+            colSum += bsol[j][i];
+        }
+        if (colSum == 1) {
+            for (int j = 0; j < 5; ++j) {
+                if (bsol[j][i] == 0) {
+                    bv = bot1[j][i];
+                    if (checkBot(bv)) {
+                        bsol[j][i] = 1;
+                        justchecking();
+                        return bv;
+                    }
+                }
+            }
+        }
+    }
+
+    // Check if the bot can complete the main diagonal
+    mainDiagonalSum = 0;
+    for (int i = 0; i < 5; ++i) {
+        mainDiagonalSum += bsol[i][i];
+    }
+    if (mainDiagonalSum == 1) {
+        for (int i = 0; i < 5; ++i) {
+            if (bsol[i][i] == 0) {
+                bv = bot1[i][i];
+                if (checkBot(bv)) {
+                    bsol[i][i] = 1;
+                    justchecking();
+                    return bv;
+                }
+            }
+        }
+    }
+
+    // Check if the bot can complete the secondary diagonal
+    secondaryDiagonalSum = 0;
+    for (int i = 0; i < 5; ++i) {
+        secondaryDiagonalSum += bsol[i][4 - i];
+    }
+    if (secondaryDiagonalSum == 1) {
+        for (int i = 0; i < 5; ++i) {
+            if (bsol[i][4 - i] == 0) {
+                bv = bot1[i][4 - i];
+                if (checkBot(bv)) {
+                    bsol[i][4 - i] = 1;
+                    justchecking();
+                    return bv;
+                }
+            }
+        }
+    }
+
+
+    // If no strategic moves are available, make a random choice
+    while (work) {
+        random_device rd;
+        uniform_int_distribution<int> dist(1, 25);
+        bv = dist(rd);
+        if (checkBot(bv)) {
+            Update = true; // to add random number
+            work = false;
+            break;
+        }
+    }//*/
+    if (Update) {
+        // Update bsol matrix
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (bot1[i][j] == bv) {
+                    bsol[i][j] = 1;
+                }
+            }
+        }
+        justchecking();
+    }
+
+
+    return bv;
+
 }
 
 

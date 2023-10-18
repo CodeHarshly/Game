@@ -160,15 +160,15 @@ int GameOptions(RenderWindow& window)
                             switch (Optionspage.GetPressValue1())
                             {
                             case 0:
-                                cout << "STM button has been Pressed " << endl;
-                                mainGame(window);
+                                cout << "Bingo button has been Pressed " << endl;
+                                Bingo(window);
                                 break;
                             case 1:
-                                cout << "O button has been Pressed " << endl;
-                                boardgame(window);
+                                cout << "SM button has been Pressed " << endl;
+                                mainGame(window);
                                 break;
                             case 2:
-                                Bingo(window);
+                                boardgame(window);
                                 break;
                             case 3:
                                 MainPage(window);
